@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <title>Maimai 的早晨 · 猫咪模拟器</title>
+    <script type="module" crossorigin src="./assets/main-CACKP_IN.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/audio-BRieI7eG.js">
+    <link rel="stylesheet" crossorigin href="./assets/main-NZ1NluAR.css">
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+
+    <!-- text that floats over the cat (meow, zzz) -->
+    <div id="floaters"></div>
+
+    <div id="hud" class="hidden">
+      <div class="hud-score">
+        <div class="label">捣蛋值</div>
+        <div id="score" class="value">0</div>
+        <div id="combo" class="combo"></div>
+      </div>
+      <div class="hud-missions">
+        <div class="label">今天想做的事 <span id="mission-count"></span></div>
+        <ul id="missions"></ul>
+      </div>
+      <div class="hud-status">
+        <div id="cat-name" class="cat-name">Maimai</div>
+        <div class="bar" title="体力"><i id="energy"></i></div>
+        <div class="bar charge" title="起跳蓄力"><i id="charge"></i></div>
+      </div>
+      <div class="hud-buttons">
+        <button id="btn-close" class="accent" title="近看 Maimai：转着看、拉近看毛，按住左键摸摸她 (V)">近看 Maimai (V)</button>
+        <button id="btn-quality" title="画质"></button>
+        <button id="btn-mute" title="声音 (M)">声音：开</button>
+        <button id="btn-help" title="操作说明 (Esc)">操作说明</button>
+      </div>
+      <div id="toasts"></div>
+      <div id="hint" class="hint"></div>
+      <div id="close-panel" class="close-panel hidden">
+        <div class="close-tip">拖动转着看 · 滚轮或双指拉近 · 在她身上按住左键慢慢划过，摸摸她</div>
+        <div class="close-parts">
+          <button data-part="head" title="1">头</button>
+          <button data-part="body" title="2">身体</button>
+          <button data-part="tail" title="3">尾巴</button>
+          <button data-part="paw" title="4">爪子</button>
+          <button id="btn-close-exit" class="exit" title="V / Esc">返回</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading" class="overlay">
+      <div class="loading-card">
+        <h1>Maimai 的早晨</h1>
+        <p id="load-msg">正在布置房间…</p>
+        <div class="load-bar"><i id="load-bar"></i></div>
+      </div>
+    </div>
+
+    <div id="start" class="overlay hidden">
+      <div class="card">
+        <h1>Maimai 的早晨</h1>
+        <p class="subtitle">早上 8:24，太阳照进来了。房间是你的了。</p>
+        <div class="controls">
+          <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 走动</div>
+          <div><kbd>Shift</kbd> 跑　<kbd>C</kbd> 慢慢走</div>
+          <div><kbd>空格</kbd> 跳。按住蓄力，松开扑出去</div>
+          <div><kbd>鼠标左键</kbd> / <kbd>F</kbd> 伸爪拍东西</div>
+          <div><kbd>E</kbd> 在地毯上按住磨爪</div>
+          <div><kbd>Q</kbd> 喵　<kbd>X</kbd> 坐下　<kbd>Z</kbd> 趴下睡觉</div>
+          <div><kbd>G</kbd> 舔毛　<kbd>R</kbd> 伸懒腰</div>
+          <div><kbd>鼠标</kbd> 转视角　<kbd>滚轮</kbd> 拉远拉近</div>
+          <div><kbd>V</kbd> 近看 Maimai：拉近看毛，按住左键摸她</div>
+          <div><kbd>P</kbd> 隐藏界面拍照　<kbd>M</kbd> 静音</div>
+          <div><kbd>[</kbd><kbd>]</kbd> 调暗 / 调亮　<kbd>Esc</kbd> 暂停</div>
+        </div>
+        <div class="start-buttons">
+          <button id="btn-play" class="primary">开始</button>
+          <button id="btn-close-start">近看 Maimai</button>
+        </div>
+        <p id="gpu-note" class="note hidden"></p>
+        <p class="tip">房间：开源项目 <a href="https://github.com/Leonxlnx/room-at-dawn" target="_blank" rel="noopener">Room at Dawn</a>（Leon Lin，MIT 许可）。音乐：Kevin MacLeod《Meditation Impromptu 02》（incompetech.com）。环境声：Silas S. Brown《Dawnchorus-uk》（公有领域）、Gravity Sound《Rustling leaves》。音乐和树叶声按 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> 使用。Maimai 模型的蒙皮权重拟合时用了 AI4Animation 的动捕数据（CC BY-NC 4.0），仅供非商业用途。<br><a href="./apartment.html">去旧版客厅，用程序生成的猫玩</a></p>
+      </div>
+    </div>
+
+  </body>
+</html>
